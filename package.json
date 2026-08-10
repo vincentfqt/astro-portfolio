@@ -7,14 +7,18 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "check": "astro check",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.10",
     "@astrojs/preact": "^6.0.2",
     "@astrojs/rss": "^4.0.19",
+    "@astrojs/ts-plugin": "^1.10.10",
     "astro": "^7.2.0",
-    "preact": "^10.29.8"
+    "preact": "^10.29.8",
+    "typescript": "^6.0.3"
   }
 }
