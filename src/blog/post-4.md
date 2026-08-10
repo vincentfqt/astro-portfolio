@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Mon quatrième article de blog
 author: Apprenti Astro
 description: "Ce article apparaîtra tout seul !"
