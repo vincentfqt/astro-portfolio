@@ -1,0 +1,115 @@
+---
+interface Props {
+  title: string;
+  pubDate: string;
+  description: string;
+  image: string;
+  alt: string;
+  link: string;
+  tags?: string[];
+}
+
+const { title, pubDate, description, image, alt, link, tags } = Astro.props;
+---
+
+<div class="project-card">
+  <a href={link} target="_blank" rel="noopener noreferrer">
+    <div class="card-image">
+      <img src={image} alt={alt} />
+    </div>
+    <div class="card-content">
+      <h3>{title}</h3>
+      <p>{pubDate}</p>
+      <p>{description}</p>
+      {
+        tags && tags.length > 0 && (
+          <div class="tags">
+            {tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </a>
+</div>
+
+<style>
+  .project-card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    background: white;
+    height: 100%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .project-card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .card-content p {
+    margin: 0 0 1rem 0;
+    font-size: 0.95rem;
+    color: #666;
+    flex: 1;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+</style>

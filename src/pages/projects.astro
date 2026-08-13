@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import "@styles/global.css";
+
+// const allPosts = await getCollection("blog");
+const allProjects = await getCollection("projects");
+
+const pageTitle = "Mes projets";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h2>Voici mes projets</h2>
+
+  <div class="project-grid">
+    {
+      allProjects.map((project: any) => (
+        <ProjectCard
+          title={project.data.title}
+          pubDate={project.data.pubDate}
+          description={project.data.description}
+          image={project.data.image.url}
+          alt={project.data.image.alt}
+          link={project.data.link}
+          tags={project.data.tags}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>
