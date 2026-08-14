@@ -19,9 +19,9 @@ const pageTitle = "Mes projets";
         <ProjectCard
           title={project.data.title}
           pubDate={project.data.pubDate}
+          updateDate={project.data.updateDate}
           description={project.data.description}
-          image={project.data.image.url}
-          alt={project.data.image.alt}
+          image={project.data.image}
           link={project.data.link}
           tags={project.data.tags}
         />
@@ -29,3 +29,12 @@ const pageTitle = "Mes projets";
     }
   </div>
 </BaseLayout>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+</style>

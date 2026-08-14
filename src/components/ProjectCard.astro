@@ -1,25 +1,36 @@
 ---
 interface Props {
   title: string;
-  pubDate: string;
+  pubDate: Date;
+  updateDate?: Date;
   description: string;
-  image: string;
-  alt: string;
+  image: {
+    url: string;
+    alt: string;
+  };
   link: string;
   tags?: string[];
 }
 
-const { title, pubDate, description, image, alt, link, tags } = Astro.props;
+const { title, pubDate, updateDate, description, image, link, tags } =
+  Astro.props;
 ---
 
 <div class="project-card">
   <a href={link} target="_blank" rel="noopener noreferrer">
     <div class="card-image">
-      <img src={image} alt={alt} />
+      <img src={image.url} alt={image.alt} />
     </div>
     <div class="card-content">
       <h3>{title}</h3>
-      <p>{pubDate}</p>
+      <p>
+        {pubDate.toLocaleDateString()} - {pubDate.toLocaleTimeString()}
+      </p>
+      {
+        updateDate && (
+          <p>Date de mise à jour : {updateDate.toLocaleDateString()}</p>
+        )
+      }
       <p>{description}</p>
       {
         tags && tags.length > 0 && (

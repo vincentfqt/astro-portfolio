@@ -1,12 +1,14 @@
 ---
 title: "Mon premier projet"
 pubDate: 2022-07-01
+updateDate: 2022-07-02
 description: "Il s'agit du premier projet de mon portfolio Astro."
+link: "/astro-portfolio/projects/project-1"
 author: "Apprenti Astro"
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "Le logo Astro sur un fond sombre avec une lueur rose."
-tags: ["astro", "blogging", "apprentissage en public", "projet"]
+tags: ["astro", "projet"]
 ---
 
 Bienvenue sur mon _nouveau portfolio_ dédié à l'apprentissage d'Astro ! Ici, je vais partager mon parcours d'apprentissage en créant un nouveau site web.

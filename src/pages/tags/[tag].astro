@@ -5,28 +5,35 @@ import BlogPost from "@components/BlogPost.astro";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
+  const allProjects = await getCollection("projects");
 
   const uniqueTags = [
-    ...new Set(allPosts.flatMap((post: any) => post.data.tags || [])),
+    ...new Set([
+      ...allPosts.flatMap((post: any) => post.data.tags || []),
+      ...allProjects.flatMap((project: any) => project.data.tags || []),
+    ]),
   ];
 
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post: any) =>
       post.data.tags.includes(tag),
     );
+    const filteredProjects = allProjects.filter((project: any) =>
+      project.data.tags.includes(tag),
+    );
     return {
       params: { tag },
-      props: { posts: filteredPosts },
+      props: { posts: filteredPosts, projects: filteredProjects },
     };
   });
 }
 
 const { tag } = Astro.params;
-const { posts } = Astro.props;
+const { posts, projects } = Astro.props;
 ---
 
 <BaseLayout pageTitle={tag}>
-  <p>Articles étiquetés avec {tag}</p>
+  <p>Articles de blog étiquetés avec {tag}</p>
   <ul>
     {
       posts.map((post: any) => (
@@ -34,6 +41,18 @@ const { posts } = Astro.props;
           url={`/astro-portfolio/posts/${post.id}/`}
           title={post.data.title}
         />
+      ))
+    }
+  </ul>
+  <p>Projets étiquetés avec {tag}</p>
+  <ul>
+    {
+      projects.map((project: any) => (
+        <li>
+          <a href={`/astro-portfolio/projects/${project.id}/`}>
+            {project.data.title}
+          </a>
+        </li>
       ))
     }
   </ul>
