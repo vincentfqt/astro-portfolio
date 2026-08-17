@@ -8,4 +8,5 @@ export default defineConfig({
   site: "https://vincentfqt.github.io",
   base: "/astro-portfolio",
   integrations: [preact()],
+  prefetch: true,
 });
