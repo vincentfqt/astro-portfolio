@@ -34,7 +34,9 @@ const { frontmatter } = Astro.props;
     {
       frontmatter.tags?.map((tag: string) => (
         <p class="tag">
-          <a href={`/astro-portfolio/tags/${tag}`}>{tag}</a>
+          <a href={`/astro-portfolio/tags/${tag}`} data-astro-prefetch>
+            {tag}
+          </a>
         </p>
       ))
     }

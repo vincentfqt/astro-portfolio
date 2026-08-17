@@ -20,7 +20,9 @@ const pageTitle = "Index des étiquettes";
     {
       tags.map((tag) => (
         <p class="tag">
-          <a href={`/astro-portfolio/tags/${tag}`}>{tag}</a>
+          <a href={`/astro-portfolio/tags/${tag}`} data-astro-prefetch>
+            {tag}
+          </a>
         </p>
       ))
     }

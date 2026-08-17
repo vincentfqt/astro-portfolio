@@ -49,7 +49,10 @@ const { posts, projects } = Astro.props;
     {
       projects.map((project: any) => (
         <li>
-          <a href={`/astro-portfolio/projects/${project.id}/`}>
+          <a
+            href={`/astro-portfolio/projects/${project.id}/`}
+            data-astro-prefetch
+          >
             {project.data.title}
           </a>
         </li>
